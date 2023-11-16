@@ -1,10 +1,10 @@
 <mvc:View
-	controllerName="cap.app.controller.App"
+	controllerName="create.salesman.controller.App"
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:table="sap.ui.table"
-	xmlns:l="sap.ui.layout"
 	>
-<App id="app"></App>
+<App id="app">
+</App>
+
 </mvc:View>
