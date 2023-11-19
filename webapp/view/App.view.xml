@@ -1,10 +1,232 @@
-<mvc:View
-	controllerName="create.salesman.controller.App"
-	displayBlock="true"
-	xmlns="sap.m"
+<mvc:View controllerName="create.salesman.controller.App" displayBlock="true"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.uxap"
 	xmlns:mvc="sap.ui.core.mvc"
-	>
-<App id="app">
-</App>
+	xmlns:layout="sap.ui.layout" height="100%"
+	xmlns:m="sap.m">
+	<m:App id="app">
+		<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showAnchorBarPopover="false">
+			<headerTitle>
+				<ObjectPageDynamicHeaderTitle>
+					<breadcrumbs>
+
+						<m:Breadcrumbs id="breadcrumbsId" currentLocationText="Object Page Example">
+							<m:Link text="Page 1 a very long link" press="handleLink1Press"/>
+							<m:Link text="Page 2 long link" press="handleLink2Press"/>
+						</m:Breadcrumbs>
+					</breadcrumbs>
+					<expandedHeading>
+						<m:Title text="Create Salesman Profile" wrapping="true"/>
+					</expandedHeading>
+
+					<snappedHeading>
+						<m:FlexBox fitContainer="true" alignItems="Center">
+							<m:Title text="Create Salesman Profile" wrapping="true" />
+						</m:FlexBox>
+					</snappedHeading>
+
+					<expandedContent>
+						<m:Text text="Supplier Code:"/>
+					</expandedContent>
+
+					<snappedContent>
+						<m:Text text="Supplier Code:"/>
+					</snappedContent>
+
+					<snappedTitleOnMobile>
+						<m:Title text="Supplier Code:"/>
+					</snappedTitleOnMobile>
+
+					<actions>
+						<m:Image src="{
+								value: 'create/salesman/images/derga.svg',
+								formatter: 'sap.ui.require.toUrl'
+							}" class="sapUiTinyMarginEnd"/>
+					</actions>
+				</ObjectPageDynamicHeaderTitle>
+			</headerTitle>
+
+			<headerContent>
+				<m:FlexBox wrap="Wrap">
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<m:ObjectStatus text="Supplier Name"/>
+						<m:ObjectStatus text="Patric Lenarduzzi" state="Success" />
+					</layout:VerticalLayout>
+
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<m:ObjectStatus text="Supplier Address"/>
+						<m:ObjectStatus title="Address" text="74C Aaliyah River, Bayerhaven"/>
+						<m:ObjectStatus title="Email" text="abc@gmail.com" state="Information"/>
+						<m:ObjectStatus title="PEC:" text="Content"/>
+					</layout:VerticalLayout>
+
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<layout:layoutData>
+							<ObjectPageHeaderLayoutData visibleS="false" visibleM="false"/>
+						</layout:layoutData>
+						<m:ObjectStatus text="Company" />
+						<m:ObjectStatus title="Company Name" text="Schertech LTD."/>
+						<m:ObjectStatus title="Company Code" text="123"/>
+					</layout:VerticalLayout>
+
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<layout:layoutData>
+							<ObjectPageHeaderLayoutData visibleS="false" visibleM="false"/>
+						</layout:layoutData>
+						<m:ObjectStatus text="Salesman Total Life Date" />
+						<m:ObjectStatus title="Starting Date" text="Jan 22, 2023"/>
+						<m:ObjectStatus title="Ending Date" text="Dec 31, 2024"/>
+					</layout:VerticalLayout>
+
+					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+						<m:Button text="Edit" />
+					</layout:VerticalLayout>
+				</m:FlexBox>
+			</headerContent>
+
+
+			<sections>
+				<ObjectPageSection titleUppercase="false" id="masterSection" title="Master Data">
+
+					<subSections>
+						<ObjectPageSubSection id="masterSectionSS1">
+							<blocks>
+
+								<m:Text text="kkkk"></m:Text>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+
+				<ObjectPageSection titleUppercase="false" id="contributionSection" title="Contribution Data" importance="Medium">
+
+					<subSections>
+						<ObjectPageSubSection id="contributionSectionSS1" title="Contribution Data" titleUppercase="false">
+							<blocks>
+								<m:Text text="kkkk"></m:Text>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<ObjectPageSection titleUppercase="false" id="associateSection" title="Associate Data">
+
+					<subSections>
+						<ObjectPageSubSection id="associateSectionSS1">
+							<blocks>
+
+								<m:Text text="kkkk"></m:Text>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<ObjectPageSection titleUppercase="false" id="additionalSection" title="Additional Data">
+
+					<subSections>
+						<ObjectPageSubSection id="additionalSectionSS1">
+							<blocks>
+
+								<m:Text text="kkkk"></m:Text>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<ObjectPageSection titleUppercase="false" id="notesSection" title="Notes">
+
+					<subSections>
+						<ObjectPageSubSection id="notesSectionSS1">
+							<blocks>
+
+								<m:Text text="kkkk"></m:Text>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+				<ObjectPageSection titleUppercase="false" id="attachmentSection" title="Attachment">
+
+					<subSections>
+						<ObjectPageSubSection id="attachmentSectionSS1">
+							<blocks>
+
+								<m:Text text="kkkk"></m:Text>
+							</blocks>
+						</ObjectPageSubSection>
+					</subSections>
+				</ObjectPageSection>
+
+			</sections>
+		</ObjectPageLayout>
+
+	</m:App>
 
 </mvc:View>
+
+
+<!-- <Page id="idPage" title="Create SalesMan profile Application" showNavButton="true" class= "sapUiResponsivePadding-header">
+	<headerContent>
+		
+		<Image src="{
+		value: 'create/salesman/images/circle_btn.svg',
+
+		formatter: 'sap.ui.require.toUrl'
+
+	}" height="65%" press=".goToHomePage"/>
+		<Image src="{
+
+		value: 'create/salesman/images/bel_btn.svg',
+
+		formatter: 'sap.ui.require.toUrl'
+
+	}" height="65%" press=".goToHomePage"/>
+		<Image src="{
+
+		value: 'create/salesman/images/avatar.svg',
+
+		formatter: 'sap.ui.require.toUrl'
+
+	}" height="65%" press=".goToHomePage"/>
+	</headerContent>
+	<content>
+		<ObjectHeader title="Create Salesman Profile" backgroundDesign="Solid" responsive="true" fullScreenOptimized="true"> <ObjectAttribute title="Manufacturer" text="{SupplierName}"/>
+		</ObjectHeader>
+		<IconTabBar expanded="{device>/isNoPhone}" class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
+			<items>
+				<IconTabFilter key="info" text="Master Data">
+					<f:SimpleForm layout="ResponsiveGridLayout">
+						<f:title>
+							<core:Title text="A Form" />
+						</f:title>
+						<Label text="Label"/>
+						<Text text="Value"/>
+					</f:SimpleForm>
+				</IconTabFilter>
+				<IconTabFilter key="attachments" text="Contribution Data">
+					<List headerText="A List" showSeparators="Inner">
+					</List>
+				</IconTabFilter>
+				<IconTabFilter key="notes" text="Associate Data">
+					<FeedInput />
+				</IconTabFilter>
+				<IconTabFilter key="notes" text="Additional Data">
+					<FeedInput />
+				</IconTabFilter>
+				<IconTabFilter key="notes" text="Notes">
+					<FeedInput />
+				</IconTabFilter>
+				<IconTabFilter key="notes" text="Attachment">
+					<FeedInput />
+				</IconTabFilter>
+			</items>
+		</IconTabBar>
+		<f:SimpleForm layout="ResponsiveGridLayout" class="sapUiForceWidthAuto sapUiResponsiveMargin">
+			<f:title>
+				<core:Title text="A Form" />
+			</f:title>
+			<Label text="Label"/>
+			<Text text="Value"/>
+		</f:SimpleForm>
+		<List headerText="A List" backgroundDesign="Translucent" width="auto" class="sapUiResponsiveMargin"/>
+		<Table headerText="A Table" width="auto" class="sapUiResponsiveMargin"/>
+		<Panel headerText="A Panel" width="auto" class="sapUiResponsiveMargin"/>
+	</content>
+</Page> -->
