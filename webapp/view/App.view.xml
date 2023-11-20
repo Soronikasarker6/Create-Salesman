@@ -431,7 +431,11 @@
 									<m:Label text="Note"></m:Label>
 									<m:Input placeholder="Write Here">
 									</m:Input>
-									<m:Button text="Clear" press="onPress" />
+									<m:HBox justifyContent="End">
+										<m:Button text="Clear" press="onPress" />
+
+									</m:HBox>
+
 
 								</m:VBox>
 
