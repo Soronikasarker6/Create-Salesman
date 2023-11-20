@@ -7,7 +7,7 @@
 	xmlns:m="sap.m"
 	xmlns:s="sap.f"
 	xmlns:table="sap.ui.table"
-	xmlns:u="sap.ui.unified"
+	xmlns:upload="sap.m.upload"
 	xmlns:main="sap.ui.webc.main">
 	<m:App id="app">
 		<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showAnchorBarPopover="false" showFooter="true">
@@ -360,42 +360,74 @@
 					<subSections>
 						<ObjectPageSubSection id="attachmentSectionSS1">
 							<blocks>
-								<m:VBox>
-									<m:OverflowToolbar id="otb1">
-										<m:Label text="Attachments (0)"/>
+								<upload:UploadSet
+								id="UploadSet"
+								instantUpload="true"
+								showIcons="true"
+								uploadEnabled="true"
+								terminationEnabled="true"
+								fileTypes="txt,doc,png"
+								maxFileNameLength="30"
+								maxFileSize="200"
+								mediaTypes="text/plain,application/msword,image/jpeg"
+								uploadUrl="../../../../upload"
+								uploadButtonInvisible="false"
+								fileRenamed="onFileRenamed"
+								sameFilenameAllowed="false"
+								items="{path: '/items', templateShareable: false}">
+								<upload:toolbar>
+									<m:OverflowToolbar>
+										<m:Label text="Attachments (0)"></m:Label>
 										<m:ToolbarSpacer/>
-										<m:Button text="Upload" press="handleUploadPress"/>
 									</m:OverflowToolbar>
-									<m:FlexBox justifyContent="Center">
-										<layout:VerticalLayout>
-											<m:Image src="{
-											value: 'create/salesman/images/upload.svg',
-											formatter: 'sap.ui.require.toUrl'
-										}" class="sapUiTinyMarginEnd"/>
-											<m:Label text="No files found."></m:Label>
-											<m:Label text='Drop files to upload, or use the "Upload" button.'></m:Label>
-											<m:Button text="Upload" press="handleUploadPress"/>
-
-										</layout:VerticalLayout>
-									</m:FlexBox>
-								</m:VBox>
-
-
-
+								</upload:toolbar>
+							<upload:items>
+								<upload:UploadSetItem
+										fileName="{fileName}"
+										mediaType="{mediaType}"
+										url="{url}"
+										thumbnailUrl="{thumbnailUrl}"
+										attributes="{path: 'attributes', templateShareable: false}"
+										markers="{path: 'markers', templateShareable: false}"
+										statuses="{path: 'statuses', templateShareable: false}"
+										uploadState="{uploadState}">
+									<upload:attributes>
+										<m:ObjectAttribute
+												title="{title}"
+												text="{text}"
+												active="{active}"/>
+									</upload:attributes>
+									<upload:markers>
+										<m:ObjectMarker
+												type="{type}"
+												visibility="{visibility}"/>
+									</upload:markers>
+									<upload:statuses>
+										<m:ObjectStatus
+												title="{title}"
+												text="{text}"
+												state="{state}"
+												icon="{icon}"
+												active="{active}"/>
+									</upload:statuses>
+								</upload:UploadSetItem>
+							</upload:items>
+						</upload:UploadSet>
 							</blocks>
 						</ObjectPageSubSection>
 					</subSections>
 				</ObjectPageSection>
 			</sections>
 			<footer>
-				<m:OverflowToolbar class="sapUiTinyMargin">
+				<m:OverflowToolbar>
 					<m:Image src="{
 						value: 'create/salesman/images/derga.svg',
 						formatter: 'sap.ui.require.toUrl'
-					}" class="sapUiTinyMarginEnd"/>
+					}" class=" sapUiMediumMarginBegin sapUiTinyMarginTopBottom"/>
 					<m:ToolbarSpacer />
-					<m:Button text="Save" press="onSave" type="Emphasized"/>
-					<m:Button text="Discard" press="onDiscard" />
+					<m:Button text="Save and Exit" press="onSave" type="Emphasized"/>
+					<m:Button text="Save and Go To" press="onSaveAndGo" />
+					<m:Button text="Cancel" press="onDiscard" />
 				</m:OverflowToolbar>
 			</footer>
 		</ObjectPageLayout>
