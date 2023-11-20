@@ -49,7 +49,7 @@
 				<m:FlexBox wrap="Wrap">
 					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
 						<m:ObjectStatus text="Supplier Name"/>
-						<m:ObjectStatus text="Patric Lenarduzzi" state="Success" />
+						<m:ObjectStatus text="Patric Lenarduzzi" state="Success" class="sapThemeFont"/>
 					</layout:VerticalLayout>
 
 					<layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
@@ -90,7 +90,7 @@
 							<blocks>
 								<m:HBox >
 									<m:VBox class="sapUiSmallMargin" width="25%">
-										<m:Title level="H3" text="Profile Data:" />		
+										<m:Title level="H3" text="Profile Data:" class="sapUiSmallMarginBottom" />		
 										<m:Label text="Starting Date"/>
 										<m:DatePicker id="DP1" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
 										<m:Label text="Ending Date"/>
@@ -99,7 +99,7 @@
 
 								        </m:VBox>
 										<m:VBox class="sapUiSmallMargin" width="25%">
-											<m:Title level="H3" text="Salesman/ Subsalesman" />	
+											<m:Title level="H3" text="Salesman/ Subsalesman"  class="sapUiSmallMarginBottom"/>	
 											<m:RadioButton text="Salesman with supplier code " />
 											<m:RadioButton text="Subsalesman From" selected="true"/>
 											<m:Label text="Salesman Code:"/>
@@ -107,9 +107,12 @@
 					
 											</m:VBox>
 											<m:VBox class="sapUiSmallMargin" width="25%">
-												<m:Title level="H3" text="Configuration Details" />	
+												<m:Title level="H3" text="Configuration Details" class="sapUiSmallMarginBottom" />	
 												<m:Label text="Settlement Frequency:"/>
-												<m:Select id="settlement">
+												<m:Select id="settlement" 			
+														showSecondaryValues= "true"
+														width="100%"
+												>
 													<m:items>
 														<core:Item text="Settlement Frequency" key="A"/>
 														<core:Item text="B" key="B"/>
@@ -117,7 +120,7 @@
 													</m:items>
 												</m:Select>
 												<m:Label text="Type of Relationship:"/>
-												<m:Select id="relationship">
+												<m:Select id="relationship" width="100%" class="sapUiSmallMarginBottom">
 													<m:items>
 														<core:Item text="Type of Relationship" key="A"/>
 														<core:Item text="B" key="B"/>
@@ -125,7 +128,7 @@
 													</m:items>
 												</m:Select>
 												<m:Label text="Salesman Type:"/>
-												<m:Select id="salesman">
+												<m:Select id="salesman" width="100%" class="sapUiSmallMarginBottom">
 													<m:items>
 														<core:Item text="Salesman Type" key="A"/>
 														<core:Item text="B" key="B"/>
@@ -133,7 +136,7 @@
 													</m:items>
 												</m:Select>
 												<m:Label text="Settlement Currency:"/>
-												<m:Select id="currency">
+												<m:Select id="currency" width="100%">
 													<m:items>
 														<core:Item text="Settlement Currency" key="A"/>
 														<core:Item text="B" key="B"/>
@@ -146,7 +149,7 @@
 											<m:Title level="H3" />		
 
 											<m:Label text="Collaborator Type:"/>
-											<m:Select id="collaborator">
+											<m:Select id="collaborator" width="100%" class="sapUiSmallMarginBottom">
 												<m:items>
 													<core:Item text="Collaborator Type" key="A"/>
 													<core:Item text="B" key="B"/>
@@ -154,7 +157,7 @@
 												</m:items>
 											</m:Select>
 											<m:Label text="Settlement Form:"/>
-											<m:Select id="form">
+											<m:Select id="form" width="100%" class="sapUiSmallMarginBottom">
 												<m:items>
 													<core:Item text="Settlement Form" key="A"/>
 													<core:Item text="B" key="B"/>
@@ -162,7 +165,7 @@
 												</m:items>
 											</m:Select>
 											<m:Label text="Sector of Activity:"/>
-											<m:Select id="activity">
+											<m:Select id="activity" width="100%" class="sapUiSmallMarginBottom">
 												<m:items>
 													<core:Item text="Sector of Activity" key="A"/>
 													<core:Item text="B" key="B"/>
@@ -170,7 +173,7 @@
 												</m:items>
 											</m:Select>
 											<m:Label text="Sending Method:"/>
-											<m:Select id="method">
+											<m:Select id="method" width="100%">
 												<m:items>
 													<core:Item text="Sending Method" key="A"/>
 													<core:Item text="B" key="B"/>
