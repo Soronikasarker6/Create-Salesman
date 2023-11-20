@@ -1,21 +1,16 @@
-<mvc:View controllerName="create.salesman.controller.App" displayBlock="true"
+<mvc:View xmlns:f2="sap.f" controllerName="create.salesman.controller.App" displayBlock="true"
 	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.uxap"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:layout="sap.ui.layout" height="100%"
-	xmlns:m="sap.m">
+	xmlns:m="sap.m"
+	xmlns:s="sap.f"
+	xmlns:main="sap.ui.webc.main" xmlns:fiori="sap.ui.webc.fiori">
 	<m:App id="app">
-		<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showAnchorBarPopover="false">
+		<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showAnchorBarPopover="false"			 >
 			<headerTitle>
-				<ObjectPageDynamicHeaderTitle>
-					<breadcrumbs>
-
-						<m:Breadcrumbs id="breadcrumbsId" currentLocationText="Object Page Example">
-							<m:Link text="Page 1 a very long link" press="handleLink1Press"/>
-							<m:Link text="Page 2 long link" press="handleLink2Press"/>
-						</m:Breadcrumbs>
-					</breadcrumbs>
+				<ObjectPageDynamicHeaderTitle >
 					<expandedHeading>
 						<m:Title text="Create Salesman Profile" wrapping="true"/>
 					</expandedHeading>
@@ -27,7 +22,19 @@
 					</snappedHeading>
 
 					<expandedContent>
+						<layout:VerticalLayout >
+
 						<m:Text text="Supplier Code:"/>
+						<m:Input
+						id="supplierInput"
+						placeholder="23424325"
+						showValueHelp="true"
+						width="100%"
+					>
+					</m:Input>
+						</layout:VerticalLayout>
+
+
 					</expandedContent>
 
 					<snappedContent>
@@ -93,7 +100,173 @@
 						<ObjectPageSubSection id="masterSectionSS1">
 							<blocks>
 
-								<m:Text text="kkkk"></m:Text>
+								<m:VBox class="sapUiSmallMargin">
+									<f:Form id="FormChangeColumn_twoGroups234"
+										editable="true">
+										<f:layout>
+											<f:ColumnLayout
+												columnsM="2"
+												columnsL="3"
+												columnsXL="4"
+											/>
+										</f:layout>
+										<f:formContainers>
+											<f:FormContainer title="Starting Date">
+												<f:formElements>
+													<f:FormElement label="Name">
+														<f:fields>
+															<m:DatePicker
+															id="DP1"
+															placeholder="Enter Date"
+															change="handleChange"
+															class="sapUiSmallMarginBottom"/>														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Ending Date">
+														<f:fields>
+															<m:DatePicker
+															id="DP2"
+															placeholder="Enter Date"
+															change="handleChange"
+															class="sapUiSmallMarginBottom"/>	
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement>
+														<f:fields>
+															<m:CheckBox text="Subject To Accounting" />
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement >
+														<f:fields>
+															<m:CheckBox text="Salesman Pre-Invoice print" selected="true"/>
+														</f:fields>
+													</f:FormElement>
+											
+												</f:formElements>
+											</f:FormContainer>
+											<f:FormContainer title="Salesman/ Subsalesman">
+												<f:formElements>
+													<f:FormElement>
+														<f:fields>
+															<m:RadioButton text="Salesman with supplier Code" selected="true" />
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+												<f:formElements>
+													<f:FormElement>
+														<f:fields>
+															<m:RadioButton text="Subsalesman From" />
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+												<f:formElements>
+													<f:FormElement label="Subsalesman Code">
+														<f:fields>
+															<m:Input
+															id="subsalesman"
+															placeholder="123"
+															showSuggestion="true">
+														</m:Input>
+														</f:fields>
+													</f:FormElement>
+												</f:formElements>
+											</f:FormContainer>
+											<f:FormContainer title="Configuration Details">
+											<f:formElements>
+												<f:FormElement label="Settlement Frequency">
+													<f:fields>
+														<m:Select id="settlement" >
+																<m:items>
+																	<core:Item text="A" key="A"/>
+																	<core:Item text="B" key="B"/>
+																	<core:Item text="C" key="C"/>
+																</m:items>
+															</m:Select>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="Type of Relationship:">
+													<f:fields>
+														<m:Select id="relation" >
+																<m:items>
+																	<core:Item text="A" key="A"/>
+																	<core:Item text="B" key="B"/>
+																	<core:Item text="C" key="C"/>
+																</m:items>
+															</m:Select>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="Salesman Type">
+													<f:fields>
+														<m:Select id="salesman" >
+																<m:items>
+																	<core:Item text="A" key="A"/>
+																	<core:Item text="B" key="B"/>
+																	<core:Item text="C" key="C"/>
+																</m:items>
+															</m:Select>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="Settlement Currency">
+													<f:fields>
+														<m:Select id="currency" >
+																<m:items>
+																	<core:Item text="A" key="A"/>
+																	<core:Item text="B" key="B"/>
+																	<core:Item text="C" key="C"/>
+																</m:items>
+															</m:Select>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="Collaborator Type">
+													<f:fields>
+														<m:Select id="collaborator" >
+																<m:items>
+																	<core:Item text="A" key="A"/>
+																	<core:Item text="B" key="B"/>
+																	<core:Item text="C" key="C"/>
+																</m:items>
+															</m:Select>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="Settlement Form">
+													<f:fields>
+														<m:Select id="form" >
+																<m:items>
+																	<core:Item text="A" key="A"/>
+																	<core:Item text="B" key="B"/>
+																	<core:Item text="C" key="C"/>
+																</m:items>
+															</m:Select>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="Sector of Activity">
+													<f:fields>
+														<m:Select id="sector" >
+																<m:items>
+																	<core:Item text="A" key="A"/>
+																	<core:Item text="B" key="B"/>
+																	<core:Item text="C" key="C"/>
+																</m:items>
+															</m:Select>
+													</f:fields>
+												</f:FormElement>
+												<f:FormElement label="Sending Method">
+													<f:fields>
+														<m:Select id="method" >
+																<m:items>
+																	<core:Item text="A" key="A"/>
+																	<core:Item text="B" key="B"/>
+																	<core:Item text="C" key="C"/>
+																</m:items>
+															</m:Select>
+													</f:fields>
+												</f:FormElement>
+										
+											</f:formElements>
+										</f:FormContainer>
+										
+										</f:formContainers>
+									</f:Form>
+								</m:VBox>
 							</blocks>
 						</ObjectPageSubSection>
 					</subSections>
