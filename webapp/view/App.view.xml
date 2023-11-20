@@ -3,13 +3,13 @@
 	xmlns:core="sap.ui.core"
 	xmlns="sap.uxap"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:layout="sap.ui.layout" height="100%"
+	xmlns:layout="sap.ui.layout"
 	xmlns:m="sap.m"
 	xmlns:s="sap.f"
 	xmlns:table="sap.ui.table"
-	xmlns:main="sap.ui.webc.main" xmlns:fiori="sap.ui.webc.fiori">
+	xmlns:main="sap.ui.webc.main">
 	<m:App id="app">
-		<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showAnchorBarPopover="false"			 >
+		<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showAnchorBarPopover="false" showFooter="true">
 			<headerTitle>
 				<ObjectPageDynamicHeaderTitle >
 					<expandedHeading>
@@ -25,14 +25,9 @@
 					<expandedContent>
 						<layout:VerticalLayout >
 
-						<m:Text text="Supplier Code:"/>
-						<m:Input
-						id="supplierInput"
-						placeholder="23424325"
-						showValueHelp="true"
-						width="100%"
-					>
-					</m:Input>
+							<m:Text text="Supplier Code:"/>
+							<m:Input id="supplierInput" placeholder="23424325" showValueHelp="true" width="100%">
+							</m:Input>
 						</layout:VerticalLayout>
 
 
@@ -102,33 +97,21 @@
 							<blocks>
 
 								<m:VBox class="sapUiSmallMargin">
-									<f:Form id="FormChangeColumn_twoGroups234"
-										editable="true">
+									<f:Form id="FormChangeColumn_twoGroups234" editable="true">
 										<f:layout>
-											<f:ColumnLayout
-												columnsM="2"
-												columnsL="3"
-												columnsXL="4"
-											/>
+											<f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
 										</f:layout>
 										<f:formContainers>
 											<f:FormContainer title="Starting Date">
 												<f:formElements>
 													<f:FormElement label="Name">
 														<f:fields>
-															<m:DatePicker
-															id="DP1"
-															placeholder="Enter Date"
-															change="handleChange"
-															class="sapUiSmallMarginBottom"/>														</f:fields>
+															<m:DatePicker id="DP1" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
+														</f:fields>
 													</f:FormElement>
 													<f:FormElement label="Ending Date">
 														<f:fields>
-															<m:DatePicker
-															id="DP2"
-															placeholder="Enter Date"
-															change="handleChange"
-															class="sapUiSmallMarginBottom"/>	
+															<m:DatePicker id="DP2" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
 														</f:fields>
 													</f:FormElement>
 													<f:FormElement>
@@ -141,7 +124,7 @@
 															<m:CheckBox text="Salesman Pre-Invoice print" selected="true"/>
 														</f:fields>
 													</f:FormElement>
-											
+
 												</f:formElements>
 											</f:FormContainer>
 											<f:FormContainer title="Salesman/ Subsalesman">
@@ -162,109 +145,106 @@
 												<f:formElements>
 													<f:FormElement label="Subsalesman Code">
 														<f:fields>
-															<m:Input
-															id="subsalesman"
-															placeholder="123"
-															showSuggestion="true">
-														</m:Input>
+															<m:Input id="subsalesman" placeholder="123" showSuggestion="true">
+															</m:Input>
 														</f:fields>
 													</f:FormElement>
 												</f:formElements>
 											</f:FormContainer>
 											<f:FormContainer title="Configuration Details">
-											<f:formElements>
-												<f:FormElement label="Settlement Frequency">
-													<f:fields>
-														<m:Select id="settlement" >
+												<f:formElements>
+													<f:FormElement label="Settlement Frequency">
+														<f:fields>
+															<m:Select id="settlement">
 																<m:items>
-																	<core:Item text="A" key="A"/>
+																	<core:Item text="Settlement Frequency" key="A"/>
 																	<core:Item text="B" key="B"/>
 																	<core:Item text="C" key="C"/>
 																</m:items>
 															</m:Select>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="Type of Relationship:">
-													<f:fields>
-														<m:Select id="relation" >
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Type of Relationship:">
+														<f:fields>
+															<m:Select id="relation">
 																<m:items>
-																	<core:Item text="A" key="A"/>
+																	<core:Item text="Type of Relationship" key="A"/>
 																	<core:Item text="B" key="B"/>
 																	<core:Item text="C" key="C"/>
 																</m:items>
 															</m:Select>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="Salesman Type">
-													<f:fields>
-														<m:Select id="salesman" >
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Salesman Type">
+														<f:fields>
+															<m:Select id="salesman">
 																<m:items>
-																	<core:Item text="A" key="A"/>
+																	<core:Item text="Salesman Type" key="A"/>
 																	<core:Item text="B" key="B"/>
 																	<core:Item text="C" key="C"/>
 																</m:items>
 															</m:Select>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="Settlement Currency">
-													<f:fields>
-														<m:Select id="currency" >
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Settlement Currency">
+														<f:fields>
+															<m:Select id="currency">
 																<m:items>
-																	<core:Item text="A" key="A"/>
+																	<core:Item text="Settlement Currency" key="A"/>
 																	<core:Item text="B" key="B"/>
 																	<core:Item text="C" key="C"/>
 																</m:items>
 															</m:Select>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="Collaborator Type">
-													<f:fields>
-														<m:Select id="collaborator" >
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Collaborator Type">
+														<f:fields>
+															<m:Select id="collaborator">
 																<m:items>
-																	<core:Item text="A" key="A"/>
+																	<core:Item text="Collaborator Type" key="A"/>
 																	<core:Item text="B" key="B"/>
 																	<core:Item text="C" key="C"/>
 																</m:items>
 															</m:Select>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="Settlement Form">
-													<f:fields>
-														<m:Select id="form" >
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Settlement Form">
+														<f:fields>
+															<m:Select id="form">
 																<m:items>
-																	<core:Item text="A" key="A"/>
+																	<core:Item text="Settlement Form" key="A"/>
 																	<core:Item text="B" key="B"/>
 																	<core:Item text="C" key="C"/>
 																</m:items>
 															</m:Select>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="Sector of Activity">
-													<f:fields>
-														<m:Select id="sector" >
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Sector of Activity">
+														<f:fields>
+															<m:Select id="sector">
 																<m:items>
-																	<core:Item text="A" key="A"/>
+																	<core:Item text="Sector of Activity" key="A"/>
 																	<core:Item text="B" key="B"/>
 																	<core:Item text="C" key="C"/>
 																</m:items>
 															</m:Select>
-													</f:fields>
-												</f:FormElement>
-												<f:FormElement label="Sending Method">
-													<f:fields>
-														<m:Select id="method" >
+														</f:fields>
+													</f:FormElement>
+													<f:FormElement label="Sending Method">
+														<f:fields>
+															<m:Select id="method">
 																<m:items>
-																	<core:Item text="A" key="A"/>
+																	<core:Item text="Sending Method" key="A"/>
 																	<core:Item text="B" key="B"/>
 																	<core:Item text="C" key="C"/>
 																</m:items>
 															</m:Select>
-													</f:fields>
-												</f:FormElement>
-										
-											</f:formElements>
-										</f:FormContainer>
-										
+														</f:fields>
+													</f:FormElement>
+
+												</f:formElements>
+											</f:FormContainer>
+
 										</f:formContainers>
 									</f:Form>
 								</m:VBox>
@@ -281,37 +261,28 @@
 									<m:VBox class="sapUiSmallMargin" width="25%">
 										<m:CheckBox text="Enasarco Calculation" />
 										<m:Label text="Enasarco Membership Nr:"></m:Label>
-										<m:Input
-										id="enasarco"
-										placeholder="Enasarco Membership Nr."
-										showSuggestion="true">
-									</m:Input>
-								    </m:VBox>
+										<m:Input id="enasarco" placeholder="Enasarco Membership Nr." showSuggestion="true">
+										</m:Input>
+									</m:VBox>
 									<m:VBox class="sapUiSmallMargin" width="25%">
 										<m:CheckBox text="F.I.R.R Calculation" />
 										<m:Label text="CCIAA Province:"></m:Label>
-										<m:Input
-										id="cciaa"
-										placeholder="CCIAA Province."
-										showSuggestion="true">
-									</m:Input>
-								    </m:VBox>
+										<m:Input id="cciaa" placeholder="CCIAA Province." showSuggestion="true">
+										</m:Input>
+									</m:VBox>
 									<m:VBox class="sapUiSmallMargin" width="25%">
 										<m:CheckBox text="Supplementary Indemnity Calculation" />
 										<m:Label text="CIAA Nr:"></m:Label>
-										<m:Input
-										id="ciaa"
-										placeholder="CIAA Nr."
-										showSuggestion="true">
-									</m:Input>
-								    </m:VBox>
-									<m:VBox class="sapUiSmallMargin"  width="25%">
+										<m:Input id="ciaa" placeholder="CIAA Nr." showSuggestion="true">
+										</m:Input>
+									</m:VBox>
+									<m:VBox class="sapUiSmallMargin" width="25%">
 										<m:CheckBox text="Enasarco/ F.I.R.R Certification" />
 										<m:Label ></m:Label>
 										<m:CheckBox text="Meritocratic Allowance" />
 
-								    </m:VBox>
-								</m:HBox>	
+									</m:VBox>
+								</m:HBox>
 							</blocks>
 						</ObjectPageSubSection>
 					</subSections>
@@ -321,77 +292,69 @@
 					<subSections>
 						<ObjectPageSubSection id="associateSectionSS1">
 							<blocks>
-								<table:Table
-								id="table"
-								selectionMode="MultiToggle"
-								rows="{/ProductCollection}"
-								rowMode="{ui>/rowMode}"
-								ariaLabelledBy="title">
-								<table:extension>
-									<m:OverflowToolbar style="Clear">
-										<m:Title id="title" text="Title"/>
-										<m:ToolbarSpacer/>
-										<m:SearchField
-										placeholder="Search"
-										search="filterGlobally"
-										width="15rem"/>
-										<m:Button text="Add" type="Emphasized"/>
-										<m:Button text="Delete" />
-									</m:OverflowToolbar>
-								</table:extension>
-								<table:columns>
-									<table:Column filterProperty="Name">
-										<m:Label text="Name" />
-										<table:template>
-											<m:Text text="A" wrapping="false" />
-										</table:template>
-									</table:Column>
-									<table:Column filterProperty="Name">
-										<m:Label text="Surname" />
-										<table:template>
-											<m:Text text="A" wrapping="false" />
-										</table:template>
-									</table:Column>
-									<table:Column filterProperty="Name" hAlign="End">
-										<m:Label text="Percentage(100%)" />
-										<table:template>
-											<m:Text text="A" wrapping="false" />
-										</table:template>
-									</table:Column>
-									<table:Column filterProperty="Name" hAlign="End">
-										<m:Label text="Enasaraco Member.." />
-										<table:template>
-											<m:Text text="A" wrapping="false" />
-										</table:template>
-									</table:Column>
-									<table:Column filterProperty="Name">
-										<m:Label text="CCIAA Province" />
-										<table:template>
-											<m:Text text="A" wrapping="false" />
-										</table:template>
-									</table:Column>
-									<table:Column filterProperty="Name" hAlign="End">
-										<m:Label text="CCIAA Nr" />
-										<table:template>
-											<m:Text text="A" wrapping="false" />
-										</table:template>
-									</table:Column>
-									<table:Column filterProperty="Name" hAlign="End">
-										<m:Label text="Fiscal Code" />
-										<table:template>
-											<m:Text text="A" wrapping="false" />
-										</table:template>
-									</table:Column>
-									<table:Column filterProperty="Name">
-										<m:Label text="Locality" />
-										<table:template>
-											<m:Text text="A" wrapping="false" />
-										</table:template>
-									</table:Column>
-						
-								</table:columns>
-								
-							</table:Table>
+								<table:Table id="table" selectionMode="MultiToggle" rows="{/ProductCollection}" rowMode="{ui>/rowMode}" ariaLabelledBy="title">
+									<table:extension>
+										<m:OverflowToolbar style="Clear">
+											<m:Title id="title" text="Title"/>
+											<m:ToolbarSpacer/>
+											<m:SearchField placeholder="Search" search="filterGlobally" width="15rem"/>
+											<m:Button text="Add" type="Emphasized"/>
+											<m:Button text="Delete" />
+										</m:OverflowToolbar>
+									</table:extension>
+									<table:columns>
+										<table:Column filterProperty="Name">
+											<m:Label text="Name" />
+											<table:template>
+												<m:Text text="A" wrapping="false" />
+											</table:template>
+										</table:Column>
+										<table:Column filterProperty="Name">
+											<m:Label text="Surname" />
+											<table:template>
+												<m:Text text="A" wrapping="false" />
+											</table:template>
+										</table:Column>
+										<table:Column filterProperty="Name" hAlign="End">
+											<m:Label text="Percentage(100%)" />
+											<table:template>
+												<m:Text text="A" wrapping="false" />
+											</table:template>
+										</table:Column>
+										<table:Column filterProperty="Name" hAlign="End">
+											<m:Label text="Enasaraco Member.." />
+											<table:template>
+												<m:Text text="A" wrapping="false" />
+											</table:template>
+										</table:Column>
+										<table:Column filterProperty="Name">
+											<m:Label text="CCIAA Province" />
+											<table:template>
+												<m:Text text="A" wrapping="false" />
+											</table:template>
+										</table:Column>
+										<table:Column filterProperty="Name" hAlign="End">
+											<m:Label text="CCIAA Nr" />
+											<table:template>
+												<m:Text text="A" wrapping="false" />
+											</table:template>
+										</table:Column>
+										<table:Column filterProperty="Name" hAlign="End">
+											<m:Label text="Fiscal Code" />
+											<table:template>
+												<m:Text text="A" wrapping="false" />
+											</table:template>
+										</table:Column>
+										<table:Column filterProperty="Name">
+											<m:Label text="Locality" />
+											<table:template>
+												<m:Text text="A" wrapping="false" />
+											</table:template>
+										</table:Column>
+
+									</table:columns>
+
+								</table:Table>
 							</blocks>
 						</ObjectPageSubSection>
 					</subSections>
@@ -402,21 +365,16 @@
 						<ObjectPageSubSection id="additionalSectionSS1">
 							<blocks>
 								<m:VBox class="sapUiSmallMargin">
-									<f:Form id="twoGroup"
-										editable="true">
+									<f:Form id="twoGroup" editable="true">
 										<f:layout>
-											<f:ColumnLayout
-												columnsM="2"
-												columnsL="3"
-												columnsXL="4"
-											/>
+											<f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
 										</f:layout>
 										<f:formContainers>
 											<f:FormContainer title="Content">
 												<f:formElements>
 													<f:FormElement label="Internal Order">
 														<f:fields>
-															<m:Select id="order" >
+															<m:Select id="order">
 																<m:items>
 																	<core:Item text="Internal Order" key="A"/>
 																	<core:Item text="B" key="B"/>
@@ -425,14 +383,14 @@
 															</m:Select>
 														</f:fields>
 													</f:FormElement>
-											
+
 												</f:formElements>
 											</f:FormContainer>
 											<f:FormContainer title="Minimum Tax Payers">
 												<f:formElements>
 													<f:FormElement label="TAXIT Scheme:">
 														<f:fields>
-															<m:Select id="taxit" >
+															<m:Select id="taxit">
 																<m:items>
 																	<core:Item text="TAXIT Scheme" key="A"/>
 																	<core:Item text="B" key="B"/>
@@ -445,7 +403,7 @@
 												<f:formElements>
 													<f:FormElement label="Vat Exemption">
 														<f:fields>
-															<m:Select id="vat" >
+															<m:Select id="vat">
 																<m:items>
 																	<core:Item text="Vat Exemption" key="A"/>
 																	<core:Item text="B" key="B"/>
@@ -456,7 +414,7 @@
 													</f:FormElement>
 												</f:formElements>
 											</f:FormContainer>
-										
+
 										</f:formContainers>
 									</f:Form>
 								</m:VBox>
@@ -471,11 +429,12 @@
 							<blocks>
 								<m:VBox >
 									<m:Label text="Note"></m:Label>
-									<m:Input 
-									placeholder="Write Here">
-								</m:Input>
+									<m:Input placeholder="Write Here">
+									</m:Input>
+									<m:Button text="Clear" press="onPress" />
+
 								</m:VBox>
-								
+
 							</blocks>
 						</ObjectPageSubSection>
 					</subSections>
@@ -485,14 +444,46 @@
 					<subSections>
 						<ObjectPageSubSection id="attachmentSectionSS1">
 							<blocks>
+								<m:VBox>
+									<m:OverflowToolbar id="otb1">
+										<m:Label text="Attachments (0)"/>
+										<m:ToolbarSpacer/>
+										<m:Button text="Upload" press="handleUploadPress"/>
+									</m:OverflowToolbar>
+									<m:FlexBox justifyContent="Center">
+										<layout:VerticalLayout>
+											<m:Image src="{
+											value: 'create/salesman/images/upload.svg',
+											formatter: 'sap.ui.require.toUrl'
+										}" class="sapUiTinyMarginEnd"/>
+											<m:Label text="No files found."></m:Label>
+											<m:Label text='Drop files to upload, or use the "Upload" button.'></m:Label>
+											<m:Button text="Upload" press="handleUploadPress"/>
 
-								<m:Text text="kkkk"></m:Text>
+										</layout:VerticalLayout>
+									</m:FlexBox>
+								</m:VBox>
+
+
+
 							</blocks>
 						</ObjectPageSubSection>
 					</subSections>
 				</ObjectPageSection>
 
 			</sections>
+
+			<footer>
+				<m:OverflowToolbar class="sapUiTinyMargin">
+					<m:Image src="{
+						value: 'create/salesman/images/derga.svg',
+						formatter: 'sap.ui.require.toUrl'
+					}" class="sapUiTinyMarginEnd"/>
+					<m:ToolbarSpacer />
+					<m:Button text="Save" press="onSave" type="Emphasized"/>
+					<m:Button text="Discard" press="onDiscard" />
+				</m:OverflowToolbar>
+			</footer>
 		</ObjectPageLayout>
 
 	</m:App>
