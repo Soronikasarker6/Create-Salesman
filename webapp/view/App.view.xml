@@ -7,13 +7,10 @@
 	xmlns:m="sap.m"
 	xmlns:s="sap.f"
 	xmlns:table="sap.ui.table"
+	xmlns:u="sap.ui.unified"
 	xmlns:main="sap.ui.webc.main">
 	<m:App id="app">
-		<ObjectPageLayout id="ObjectPageLayout" 
-		showTitleInHeaderContent="true" 
-		upperCaseAnchorBar="false" 
-		showAnchorBarPopover="false" 
-		showFooter="true">
+		<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" upperCaseAnchorBar="false" showAnchorBarPopover="false" showFooter="true">
 			<headerTitle>
 				<ObjectPageDynamicHeaderTitle >
 					<expandedHeading>
@@ -27,9 +24,7 @@
 					<expandedContent>
 						<layout:VerticalLayout >
 							<m:Text text="Supplier Code:"/>
-							<m:Input id="supplierInput" placeholder="23424325" showValueHelp="true" width="100%"
-							valueHelpRequest=".onValueHelpRequest"
-							>
+							<m:Input id="supplierInput" placeholder="23424325" showValueHelp="true" width="100%" valueHelpRequest=".onValueHelpRequest">
 							</m:Input>
 						</layout:VerticalLayout>
 					</expandedContent>
@@ -92,99 +87,98 @@
 							<blocks>
 								<m:HBox >
 									<m:VBox class="sapUiSmallMargin" width="25%">
-										<m:Title level="H3" text="Profile Data:" class="sapUiSmallMarginBottom" />		
+										<m:Title level="H3" text="Profile Data:" class="sapUiSmallMarginBottom" />
 										<m:Label text="Starting Date"/>
 										<m:DatePicker id="DP1" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
 										<m:Label text="Ending Date"/>
 										<m:DatePicker id="DP2" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
-										<m:CheckBox text="Subject To Accounting" />
+										<m:CheckBox text="Subject To Accounting" class="sapUiSmallMarginTopBottom"/>
+										<m:CheckBox text="Salesman Pre-Invoice print" class="sapUiSmallMarginTop" selected="true"/>
 
-								        </m:VBox>
-										<m:VBox class="sapUiSmallMargin" width="25%">
-											<m:Title level="H3" text="Salesman/ Subsalesman"  class="sapUiSmallMarginBottom"/>	
-											<m:RadioButton text="Salesman with supplier code " />
-											<m:RadioButton text="Subsalesman From" selected="true"/>
-											<m:Label text="Salesman Code:"/>
-											<m:Input id="subsalesman" placeholder="123" showSuggestion="true"/>
-					
-											</m:VBox>
-											<m:VBox class="sapUiSmallMargin" width="25%">
-												<m:Title level="H3" text="Configuration Details" class="sapUiSmallMarginBottom" />	
-												<m:Label text="Settlement Frequency:"/>
-												<m:Select id="settlement" 			
-														showSecondaryValues= "true"
-														width="100%"
-												>
-													<m:items>
-														<core:Item text="Settlement Frequency" key="A"/>
-														<core:Item text="B" key="B"/>
-														<core:Item text="C" key="C"/>
-													</m:items>
-												</m:Select>
-												<m:Label text="Type of Relationship:"/>
-												<m:Select id="relationship" width="100%" class="sapUiSmallMarginBottom">
-													<m:items>
-														<core:Item text="Type of Relationship" key="A"/>
-														<core:Item text="B" key="B"/>
-														<core:Item text="C" key="C"/>
-													</m:items>
-												</m:Select>
-												<m:Label text="Salesman Type:"/>
-												<m:Select id="salesman" width="100%" class="sapUiSmallMarginBottom">
-													<m:items>
-														<core:Item text="Salesman Type" key="A"/>
-														<core:Item text="B" key="B"/>
-														<core:Item text="C" key="C"/>
-													</m:items>
-												</m:Select>
-												<m:Label text="Settlement Currency:"/>
-												<m:Select id="currency" width="100%">
-													<m:items>
-														<core:Item text="Settlement Currency" key="A"/>
-														<core:Item text="B" key="B"/>
-														<core:Item text="C" key="C"/>
-													</m:items>
-												</m:Select>
+									</m:VBox>
+									<m:VBox class="sapUiSmallMargin" width="25%">
+										<m:Title level="H3" text="Salesman/ Subsalesman" class="sapUiSmallMarginBottom"/>
+										<m:RadioButton text="Salesman with supplier code" class="sapUiSmallMarginTop"/>
+										<m:Label/>
+										<m:RadioButton text="Subsalesman From" class="sapUiSmallMarginTopBottom" selected="true"/>
+										<m:Label text="Salesman Code:"/>
+										<m:Input id="subsalesman" placeholder="123" showSuggestion="true"/>
 
-											</m:VBox>
-										<m:VBox class="sapUiSmallMargin" width="25%">
-											<m:Title level="H3" />		
+									</m:VBox>
+									<m:VBox class="sapUiSmallMargin" width="25%">
+										<m:Title level="H3" text="Configuration Details" class="sapUiSmallMarginBottom" />
+										<m:Label text="Settlement Frequency:"/>
+										<m:Select id="settlement" showSecondaryValues= "true" width="100%" class="sapUiSmallMarginBottom">
+											<m:items>
+												<core:Item text="Settlement Frequency" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
+										<m:Label text="Type of Relationship:"/>
+										<m:Select id="relationship" width="100%" class="sapUiSmallMarginBottom">
+											<m:items>
+												<core:Item text="Type of Relationship" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
+										<m:Label text="Salesman Type:"/>
+										<m:Select id="salesman" width="100%" class="sapUiSmallMarginBottom">
+											<m:items>
+												<core:Item text="Salesman Type" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
+										<m:Label text="Settlement Currency:"/>
+										<m:Select id="currency" width="100%">
+											<m:items>
+												<core:Item text="Settlement Currency" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
 
-											<m:Label text="Collaborator Type:"/>
-											<m:Select id="collaborator" width="100%" class="sapUiSmallMarginBottom">
-												<m:items>
-													<core:Item text="Collaborator Type" key="A"/>
-													<core:Item text="B" key="B"/>
-													<core:Item text="C" key="C"/>
-												</m:items>
-											</m:Select>
-											<m:Label text="Settlement Form:"/>
-											<m:Select id="form" width="100%" class="sapUiSmallMarginBottom">
-												<m:items>
-													<core:Item text="Settlement Form" key="A"/>
-													<core:Item text="B" key="B"/>
-													<core:Item text="C" key="C"/>
-												</m:items>
-											</m:Select>
-											<m:Label text="Sector of Activity:"/>
-											<m:Select id="activity" width="100%" class="sapUiSmallMarginBottom">
-												<m:items>
-													<core:Item text="Sector of Activity" key="A"/>
-													<core:Item text="B" key="B"/>
-													<core:Item text="C" key="C"/>
-												</m:items>
-											</m:Select>
-											<m:Label text="Sending Method:"/>
-											<m:Select id="method" width="100%">
-												<m:items>
-													<core:Item text="Sending Method" key="A"/>
-													<core:Item text="B" key="B"/>
-													<core:Item text="C" key="C"/>
-												</m:items>
-											</m:Select>
-											</m:VBox>
+									</m:VBox>
+									<m:VBox class="sapUiSmallMargin" width="25%">
+										<m:Title level="H3" />
+
+										<m:Label text="Collaborator Type:" class="sapUiSmallMarginTop"/>
+										<m:Select id="collaborator" width="100%" class="sapUiSmallMarginBottom">
+											<m:items>
+												<core:Item text="Collaborator Type" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
+										<m:Label text="Settlement Form:"/>
+										<m:Select id="form" width="100%" class="sapUiSmallMarginBottom">
+											<m:items>
+												<core:Item text="Settlement Form" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
+										<m:Label text="Sector of Activity:"/>
+										<m:Select id="activity" width="100%" class="sapUiSmallMarginBottom">
+											<m:items>
+												<core:Item text="Sector of Activity" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
+										<m:Label text="Sending Method:"/>
+										<m:Select id="method" width="100%">
+											<m:items>
+												<core:Item text="Sending Method" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
+									</m:VBox>
 								</m:HBox>
-							
+
 							</blocks>
 						</ObjectPageSubSection>
 					</subSections>
@@ -298,60 +292,44 @@
 					<subSections>
 						<ObjectPageSubSection id="additionalSectionSS1">
 							<blocks>
-								<m:VBox class="sapUiSmallMargin">
-									<f:Form id="twoGroup" editable="true">
-										<f:layout>
-											<f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
-										</f:layout>
-										<f:formContainers>
-											<f:FormContainer title="Content">
-												<f:formElements>
-													<f:FormElement label="Internal Order">
-														<f:fields>
-															<m:Select id="order">
-																<m:items>
-																	<core:Item text="Internal Order" key="A"/>
-																	<core:Item text="B" key="B"/>
-																	<core:Item text="C" key="C"/>
-																</m:items>
-															</m:Select>
-														</f:fields>
-													</f:FormElement>
+								<m:HBox class="sapUiSmallMargin">
+									<m:VBox class="sapUiSmallMargin" width="25%">
+										<m:Title level="H3" text="Content" class="sapUiSmallMarginBottom"/>
+										<m:Label text="Internal Order:"/>
+										<m:Select id="order" width="100%" class="sapUiSmallMarginBottom">
+											<m:items>
+												<core:Item text="Internal Order" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
 
-												</f:formElements>
-											</f:FormContainer>
-											<f:FormContainer title="Minimum Tax Payers">
-												<f:formElements>
-													<f:FormElement label="TAXIT Scheme:">
-														<f:fields>
-															<m:Select id="taxit">
-																<m:items>
-																	<core:Item text="TAXIT Scheme" key="A"/>
-																	<core:Item text="B" key="B"/>
-																	<core:Item text="C" key="C"/>
-																</m:items>
-															</m:Select>
-														</f:fields>
-													</f:FormElement>
-												</f:formElements>
-												<f:formElements>
-													<f:FormElement label="Vat Exemption">
-														<f:fields>
-															<m:Select id="vat">
-																<m:items>
-																	<core:Item text="Vat Exemption" key="A"/>
-																	<core:Item text="B" key="B"/>
-																	<core:Item text="C" key="C"/>
-																</m:items>
-															</m:Select>
-														</f:fields>
-													</f:FormElement>
-												</f:formElements>
-											</f:FormContainer>
+									</m:VBox>
+									<m:VBox class="sapUiSmallMargin" width="25%">
+										<m:Title level="H3" text="Minimum Tax Payers" class="sapUiSmallMarginBottom"/>
+										<m:Label text="TAXIT Scheme:"/>
+										<m:Select id="taxit" width="100%" class="sapUiSmallMarginBottom">
+											<m:items>
+												<core:Item text="TAXIT Scheme" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
 
-										</f:formContainers>
-									</f:Form>
-								</m:VBox>
+									</m:VBox>
+									<m:VBox class="sapUiSmallMargin" width="25%">
+										<m:Title level="H3" />
+										<m:Label text="Vat Exemption:" class="sapUiSmallMarginTop"/>
+										<m:Select id="vat" width="100%" class="sapUiSmallMarginBottom">
+											<m:items>
+												<core:Item text="Vat Exemption" key="A"/>
+												<core:Item text="B" key="B"/>
+												<core:Item text="C" key="C"/>
+											</m:items>
+										</m:Select>
+
+									</m:VBox>
+								</m:HBox>
 							</blocks>
 						</ObjectPageSubSection>
 					</subSections>
