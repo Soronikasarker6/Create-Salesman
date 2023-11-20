@@ -27,7 +27,9 @@
 					<expandedContent>
 						<layout:VerticalLayout >
 							<m:Text text="Supplier Code:"/>
-							<m:Input id="supplierInput" placeholder="23424325" showValueHelp="true" width="100%">
+							<m:Input id="supplierInput" placeholder="23424325" showValueHelp="true" width="100%"
+							valueHelpRequest=".onValueHelpRequest"
+							>
 							</m:Input>
 						</layout:VerticalLayout>
 					</expandedContent>

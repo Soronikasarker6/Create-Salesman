@@ -1,0 +1,37 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <TableSelectDialog id="selectDialog" title="Salesman Selection" search=".onValueHelpSearch" confirm=".onValueHelpClose" cancel=".onValueHelpClose">
+        <columns>
+            <Column width="12em">
+                <header>
+                    <Text text="Salesman Code" />
+                </header>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <header>
+                    <Text text="Salesman Name" />
+                </header>
+            </Column>
+            <Column minScreenWidth="Desktop" demandPopin="true">
+                <header>
+                    <Text text="Company.." />
+                </header>
+            </Column>
+            <Column minScreenWidth="Desktop" demandPopin="true">
+                <header>
+                    <Text text="Total Life Start" />
+                </header>
+            </Column>
+            <Column >
+                <header>
+                    <Text text="Total Life End" />
+                </header>
+            </Column>
+            <Column >
+                <header>
+                    <Text text="Company.." />
+                </header>
+            </Column>
+        </columns>
+    </TableSelectDialog>
+</core:FragmentDefinition>
