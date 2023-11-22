@@ -129,9 +129,7 @@
                                                 </m:items>
                                         </m:Select>
                                             </m:VBox>
-                                            
                                         </m:HBox>
-
                                         <m:HBox class="sapUiSmallMarginBottom">
                                             <m:VBox width="50%" class="sapUiMediumMarginEnd">
                                                 <m:Label text="Type of Relationship:"/>
@@ -177,10 +175,8 @@
                                                     <core:Item text="C" key="C"/>
                                                 </m:items>
                                             </m:Select>
-                                            </m:VBox>
-                                            
+                                            </m:VBox>  
                                         </m:HBox>
-                                
                                         <m:HBox >
                                             <m:VBox width="50%" class="sapUiMediumMarginEnd">
                                                 <m:Label text="Settlement Currency:"/>
@@ -202,14 +198,9 @@
                                                     </m:items>
                                                 </m:Select>
                                             </m:VBox>
-                                            
                                         </m:HBox>
-                                
-
                                     </m:VBox>
-
                                 </m:HBox>
-
                             </blocks>
                         </ObjectPageSubSection>
                     </subSections>
@@ -251,7 +242,7 @@
                     <subSections>
                         <ObjectPageSubSection id="associateSectionSS1">
                             <blocks>
-                                <table:Table id="table" selectionMode="MultiToggle" rows="{/ProductCollection}" rowMode="{ui>/rowMode}" ariaLabelledBy="title">
+                                <table:Table id="table" selectionMode="MultiToggle" rows="" rowMode="{ui>/rowMode}" ariaLabelledBy="title">
                                     <table:extension>
                                         <m:OverflowToolbar style="Clear">
                                             <m:Title id="title" text="Title"/>
@@ -378,11 +369,8 @@
                                     </m:Input>
                                     <m:HBox justifyContent="End">
                                         <m:Button text="Clear" press="onPress" />
-
                                     </m:HBox>
-
-
-                                </m:VBox>
+								  </m:VBox>
 
                             </blocks>
                         </ObjectPageSubSection>

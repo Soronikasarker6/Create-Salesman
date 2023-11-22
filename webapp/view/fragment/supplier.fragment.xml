@@ -1,6 +1,23 @@
 <core:FragmentDefinition xmlns="sap.m"
     xmlns:core="sap.ui.core">
-    <TableSelectDialog id="selectDialog" title="Salesman Selection" search=".onValueHelpSearch" confirm=".onValueHelpClose" cancel=".onValueHelpClose">
+    <TableSelectDialog id="selectDialog" title="Salesman Selection" search=".onValueHelpSearch" confirm=".onValueHelpClose" cancel=".onValueHelpClose"
+    items="{
+        path : 'salesman>/salesman',
+        parameters: {
+            numberOfExpandedLevels: 1
+         }}">
+    <ColumnListItem vAlign="Middle">
+        <cells>
+               <Text text="{salesman>code}" /> 
+               <Text text="{salesman>name}" />
+               <Text text="{salesman>companyCode}" />
+               <Text text="{salesman>start}" />
+               <Text text="{salesman>end}" />
+               <Text text="{salesman>region}" />    
+    
+
+        </cells>
+    </ColumnListItem>
         <columns>
             <Column width="12em">
                 <header>
@@ -14,7 +31,7 @@
             </Column>
             <Column minScreenWidth="Desktop" demandPopin="true">
                 <header>
-                    <Text text="Company.." />
+                    <Text text="Company Code" />
                 </header>
             </Column>
             <Column minScreenWidth="Desktop" demandPopin="true">
@@ -29,7 +46,7 @@
             </Column>
             <Column >
                 <header>
-                    <Text text="Company.." />
+                    <Text text="Region" />
                 </header>
             </Column>
         </columns>
