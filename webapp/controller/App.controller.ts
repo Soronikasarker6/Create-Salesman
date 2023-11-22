@@ -69,7 +69,7 @@ export default class App extends Controller {
     let aContexts = oEvent.getParameter("selectedContexts");
     if (aContexts && aContexts.length) {
        aContexts.map(function (oContext:any){
-      let selected = oContext.getObject().name;
+      let selected = oContext.getObject().code;
       console.log(selected)
       return selected;
        })
