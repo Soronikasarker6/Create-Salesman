@@ -75,7 +75,7 @@
                     </layout:VerticalLayout>
 
                     <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
-                        <m:Button text="Edit" />
+                        <m:Button text="Edit" press="onEdit"/>
                     </layout:VerticalLayout>
                 </m:FlexBox>
             </headerContent>
@@ -89,9 +89,9 @@
                                         
                                         <m:Title level="H3" text="Profile Data:" class="sapUiSmallMarginBottom" />
                                         <m:Label text="Starting Date"/>
-                                        <m:DatePicker id="DP1" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
+                                        <m:DatePicker id="DP1" placeholder="Enter Date" change="handleChanges" class="sapUiSmallMarginBottom"/>
                                         <m:Label text="Ending Date"/>
-                                        <m:DatePicker id="DP2" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
+                                        <m:DatePicker id="DP2" placeholder="Enter Date" change="handleChanges" class="sapUiSmallMarginBottom"/>
                                         <m:CheckBox text="Subject To Accounting" class="sapUiSmallMarginTopBottom"/>
                                         <m:CheckBox text="Salesman Pre-Invoice print" class="sapUiSmallMarginTop" selected="true"/>
 
@@ -395,7 +395,7 @@
                                 uploadButtonInvisible="false"
                                 fileRenamed="onFileRenamed"
                                 sameFilenameAllowed="false"
-                                items="{path: '/items', templateShareable: false}">
+                                items="{path: '', templateShareable: false}">
                                 <upload:toolbar>
                                     <m:OverflowToolbar>
                                         <m:Label text="Attachments (0)"></m:Label>
