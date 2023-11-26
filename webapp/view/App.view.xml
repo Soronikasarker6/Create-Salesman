@@ -242,13 +242,17 @@
                     <subSections>
                         <ObjectPageSubSection id="associateSectionSS1">
                             <blocks>
-                                <table:Table id="table" selectionMode="MultiToggle" rows="" rowMode="{ui>/rowMode}" ariaLabelledBy="title">
+                                <table:Table id="table" selectionMode="MultiToggle" 
+                                rows="{
+                                    path : 'rows>/rows'}"
+                                    rowMode="{ui>/rowMode}" 
+                                    ariaLabelledBy="title">
                                     <table:extension>
                                         <m:OverflowToolbar style="Clear">
                                             <m:Title id="title" text="Title"/>
                                             <m:ToolbarSpacer/>
                                             <m:SearchField placeholder="Search" search="filterGlobally" width="15rem"/>
-                                            <m:Button text="Add" type="Emphasized"/>
+                                            <m:Button text="Add" press="addRow" type="Emphasized"/>
                                             <m:Button text="Delete" />
                                         </m:OverflowToolbar>
                                     </table:extension>
@@ -256,49 +260,49 @@
                                         <table:Column filterProperty="Name">
                                             <m:Label text="Name" />
                                             <table:template>
-                                                <m:Text text="A" wrapping="false" />
+                                                <m:Input id="name" width="100%" value="{name}"/>
                                             </table:template>
                                         </table:Column>
-                                        <table:Column filterProperty="Name">
+                                        <table:Column filterProperty="Surname">
                                             <m:Label text="Surname" />
                                             <table:template>
-                                                <m:Text text="A" wrapping="false" />
+                                                <m:Input id="surname" width="100%" value="{surname}"/>
                                             </table:template>
                                         </table:Column>
-                                        <table:Column filterProperty="Name" hAlign="End">
+                                        <table:Column filterProperty="Percentage" hAlign="End">
                                             <m:Label text="Percentage(100%)" />
                                             <table:template>
-                                                <m:Text text="A" wrapping="false" />
+                                                <m:Input textAlign="End" id="percentage" width="100%" placeholder="0" value="{percentage}"/>
                                             </table:template>
                                         </table:Column>
                                         <table:Column filterProperty="Name" hAlign="End">
-                                            <m:Label text="Enasaraco Member.." />
+                                            <m:Label text="Enasaraco Member" />
                                             <table:template>
-                                                <m:Text text="A" wrapping="false" />
+                                                <m:Input id="enasaraco" width="100%" value="{enasaraco}"/>
                                             </table:template>
                                         </table:Column>
                                         <table:Column filterProperty="Name">
                                             <m:Label text="CCIAA Province" />
                                             <table:template>
-                                                <m:Text text="A" wrapping="false" />
+                                                <m:Input id="province" width="100%" value="{cCIAAProvince}"/>
                                             </table:template>
                                         </table:Column>
                                         <table:Column filterProperty="Name" hAlign="End">
                                             <m:Label text="CCIAA Nr" />
                                             <table:template>
-                                                <m:Text text="A" wrapping="false" />
+                                                <m:Input id="nr" width="100%" value="{cCIAANr}"/>
                                             </table:template>
                                         </table:Column>
                                         <table:Column filterProperty="Name" hAlign="End">
                                             <m:Label text="Fiscal Code" />
                                             <table:template>
-                                                <m:Text text="A" wrapping="false" />
+                                                <m:Input id="fiscal" width="100%" value="{fiscalCode}"/>
                                             </table:template>
                                         </table:Column>
                                         <table:Column filterProperty="Name">
                                             <m:Label text="Locality" />
                                             <table:template>
-                                                <m:Text text="A" wrapping="false" />
+                                                <m:Input id="locality" width="100%" value="{locality}"/>
                                             </table:template>
                                         </table:Column>
 

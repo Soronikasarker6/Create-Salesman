@@ -64,6 +64,13 @@ export default class App extends Controller {
       }),
       "date"
     );
+    (this.getOwnerComponent() as Component).setModel(
+      new JSONModel({
+        rows: [],
+      }),
+      "rows"
+    );
+
   }
 
   public onValueHelpRequest(oEvent: any): void {
@@ -130,4 +137,26 @@ export default class App extends Controller {
     });
     console.log(oButton);
   }
+
+
+
+  public addRow() {
+    var oModel:any = this.getView().getModel("rows");
+    var aRows = oModel.getProperty("/rows");
+    var newRow = {
+        name: "",
+        surname: "",
+        percentage: "",
+        enasaraco: "",
+        cCIAAProvince: "",
+        cCIAANr: "",
+        fiscalCode: "",
+        locality: ""
+    };
+
+    aRows.push(newRow);
+
+    oModel.setProperty("/rows", aRows);
+}
+
 }
