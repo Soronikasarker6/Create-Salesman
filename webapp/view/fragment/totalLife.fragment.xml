@@ -15,9 +15,15 @@ xmlns:f="sap.ui.layout.form"
             columnsXL="2">
             <f:content>
                 <Label text="Starting Date" />
-                <DatePicker value="{date>start}" id="S1" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
+                <DatePicker dateValue="{date>start}"       
+                    minDate="{date>startMinDate}"
+                    maxDate="{date>startMaxDate}" 
+                    id="S1" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
                 <Label text="Ending Date" />
-                <DatePicker value="{date>end}" id="D2" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
+                <DatePicker dateValue="{date>end}"   
+                    minDate="{date>endMinDate}"
+                    maxDate="{date>endMaxDate}" 
+                    id="D2" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
 
             </f:content>
         </f:SimpleForm>

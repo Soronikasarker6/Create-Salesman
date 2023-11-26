@@ -7,7 +7,6 @@ import Context from "sap/ui/model/odata/v4/Context";
 import Component from "sap/ui/core/Component";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import View from "sap/ui/core/mvc/View";
-import DatePicker from "sap/m/DatePicker";
 
 /**
  * @namespace create.salesman.controller
@@ -17,7 +16,13 @@ export default class App extends Controller {
   dataDialog: Promise<Control | Control[]>;
   dateDialog: Promise<Control | Control[]>;
   rowContext: Context;
+  currentDate: Date = new Date();
+  startDate: Date = this.currentDate;
+  endDate: any = new Date(this.startDate);
+
   public onInit(): void {
+    this.endDate.setFullYear(this.startDate.getFullYear() + 1); // For example, setting the end date to 1 year from the start date
+
     (this.getOwnerComponent() as Component).setModel(
       new JSONModel({
         salesman: [
@@ -41,12 +46,19 @@ export default class App extends Controller {
       }),
       "salesman"
     );
+    const minEndDate = structuredClone(this.startDate)
+    minEndDate.setDate(this.startDate.getDate() + 1);
+    const maxStartDate = structuredClone(this.startDate)
+    maxStartDate.setDate(maxStartDate.getDate() + 1);
     (this.getOwnerComponent() as Component).setModel(
       new JSONModel({
         date: [
           {
-            start: "Oct 23, 2023",
-            end: "Oct 21, 2024",
+            start: this.currentDate,
+            startMinDate: new Date(),
+            startMaxDate:maxStartDate,
+            end: this.endDate,
+            endMinDate: minEndDate,      
           },
         ],
       }),
@@ -85,21 +97,6 @@ export default class App extends Controller {
       });
     }
   }
-  public dateValidation() {
-    const maxDate = new Date("2024-01-01");
-
-    const sdate = this.getView().byId("S1") as DatePicker;
-    const edate = this.getView().byId("D2") as DatePicker;
-    sdate.setMaxDate(maxDate);
-    // sdate.setMinDate(new Date("2023-01-01"))
-    // edate.setMaxDate(new Date("2024-05-01"))
-    // edate.setMinDate(new Date("2023-05-01"))
-  }
-
-  handleChange() {
-    this.dateValidation();
-    console.log("lknjkn");
-  }
 
   public onEdit(oEvent: any): void {
     var oButton = oEvent.getSource(),
@@ -117,9 +114,6 @@ export default class App extends Controller {
     }
     this.dateDialog.then((dialog: Control | Control[]) => {
       (dialog as Dialog).open();
-      setTimeout(() => {
-        this.dateValidation();
-      }, 500);
     });
   }
 
