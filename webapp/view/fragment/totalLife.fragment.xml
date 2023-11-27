@@ -6,27 +6,23 @@ xmlns:f="sap.ui.layout.form"
         <content>
             <VBox items="{
                 path: 'date>/date'
-            }">
-            <f:SimpleForm id="SimpleFormChangeColumn_twoGroups234"
-            editable="true"
-            layout="ColumnLayout"
-            columnsM="2"
-            columnsL="2"
-            columnsXL="2">
-            <f:content>
-                <Label text="Starting Date" />
-                <DatePicker dateValue="{date>start}"       
-                    minDate="{date>startMinDate}"
-                    maxDate="{date>startMaxDate}" 
-                    id="S1" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
-                <Label text="Ending Date" />
-                <DatePicker dateValue="{date>end}"   
-                    minDate="{date>endMinDate}"
-                    maxDate="{date>endMaxDate}" 
-                    id="D2" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
-
-            </f:content>
-        </f:SimpleForm>
+            }"><HBox class="sapUiSmallMargin">
+                <VBox class="sapUiSmallMarginEnd">
+                    <Label text="Starting Date" />
+                    <DatePicker dateValue="{date>start}"       
+                        minDate="{date>startMinDate}"
+                        maxDate="{date>startMaxDate}" 
+                        id="S1" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
+                </VBox>
+                <VBox>
+                    <Label text="Ending Date" />
+                    <DatePicker dateValue="{date>end}"   
+                        minDate="{date>endMinDate}"
+                        maxDate="{date>endMaxDate}" 
+                        id="D2" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
+                </VBox>
+            </HBox>
+   
             </VBox>	
 		</content>
         <footer>
