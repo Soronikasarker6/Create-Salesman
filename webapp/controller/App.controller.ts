@@ -19,9 +19,9 @@ export default class App extends Controller {
   currentDate: Date = new Date();
   startDate: Date = this.currentDate;
   endDate: any = new Date(this.startDate);
-
+  total: any = 0;
   public onInit(): void {
-    this.endDate.setFullYear(this.startDate.getFullYear() + 1); // For example, setting the end date to 1 year from the start date
+    this.endDate.setFullYear(this.startDate.getFullYear() + 1);
 
     (this.getOwnerComponent() as Component).setModel(
       new JSONModel({
@@ -46,9 +46,9 @@ export default class App extends Controller {
       }),
       "salesman"
     );
-    const minEndDate = structuredClone(this.startDate)
+    const minEndDate = structuredClone(this.startDate);
     minEndDate.setDate(this.startDate.getDate() + 1);
-    const maxStartDate = structuredClone(this.startDate)
+    const maxStartDate = structuredClone(this.startDate);
     maxStartDate.setDate(maxStartDate.getDate() + 1);
     (this.getOwnerComponent() as Component).setModel(
       new JSONModel({
@@ -56,9 +56,9 @@ export default class App extends Controller {
           {
             start: this.currentDate,
             startMinDate: new Date(),
-            startMaxDate:maxStartDate,
+            startMaxDate: maxStartDate,
             end: this.endDate,
-            endMinDate: minEndDate,      
+            endMinDate: minEndDate,
           },
         ],
       }),
@@ -67,14 +67,15 @@ export default class App extends Controller {
     (this.getOwnerComponent() as Component).setModel(
       new JSONModel({
         rows: [],
+        totalPercentage: 0,
+        saveBtn: false,
       }),
       "rows"
     );
-
   }
 
   public onValueHelpRequest(oEvent: any): void {
-    var sInputValue = oEvent.getSource().getValue(),
+    const sInputValue = oEvent.getSource().getValue(),
       oView = this.getView();
 
     if (!this.dataDialog) {
@@ -93,7 +94,7 @@ export default class App extends Controller {
   }
 
   public onValueHelpClose(oEvent: any): void {
-    var oBinding = oEvent.getSource().getBinding("items");
+    const oBinding = oEvent.getSource().getBinding("items");
     oBinding.filter([]);
     let aContexts = oEvent.getParameter("selectedContexts");
     if (aContexts && aContexts.length) {
@@ -106,7 +107,7 @@ export default class App extends Controller {
   }
 
   public onEdit(oEvent: any): void {
-    var oButton = oEvent.getSource(),
+    const oButton = oEvent.getSource(),
       oView = this.getView();
     const that = this;
     if (!this.dateDialog) {
@@ -131,32 +132,65 @@ export default class App extends Controller {
   }
 
   public onSave(): void {
-    var oButton = this.getView().byId("data");
+    const oButton = this.getView().byId("data");
     this.dateDialog.then(function (dialog: Control | Control[]) {
       (dialog as Dialog).close();
     });
     console.log(oButton);
   }
 
+  onInputChange(): void {
+    const oModel: any = this.getView().getModel("rows");
+    const aRows = oModel.getProperty("/rows");
 
+    const totalPercentage = aRows.reduce(
+      (sum: any, row: any) => sum + parseFloat(row.percentage),
+      0
+    );
+    oModel.setProperty("/totalPercentage", totalPercentage);
+    const saveBtn = totalPercentage == 100 ? true : false;
+    oModel.setProperty("/saveBtn", saveBtn);
+  }
 
   public addRow() {
-    var oModel:any = this.getView().getModel("rows");
-    var aRows = oModel.getProperty("/rows");
-    var newRow = {
-        name: "",
-        surname: "",
-        percentage: "",
-        enasaraco: "",
-        cCIAAProvince: "",
-        cCIAANr: "",
-        fiscalCode: "",
-        locality: ""
+    const oModel: any = this.getView().getModel("rows");
+    const aRows = oModel.getProperty("/rows");
+    const newRow = {
+      name: "",
+      surname: "",
+      percentage: 0,
+      enasaraco: "",
+      cCIAAProvince: "",
+      cCIAANr: "",
+      fiscalCode: "",
+      locality: "",
     };
 
     aRows.push(newRow);
 
     oModel.setProperty("/rows", aRows);
-}
+  }
 
+  public onSaveAndExit() {}
+  public delete() {
+    var oModel: any = this.getView().getModel("rows");
+    var aRows = oModel.getProperty("/rows");
+    var newRow = {
+      name: "",
+      surname: "",
+      percentage: 0,
+      enasaraco: "",
+      cCIAAProvince: "",
+      cCIAANr: "",
+      fiscalCode: "",
+      locality: "",
+    };
+    if (oModel.getData().rows.length === 0) {
+      console.log("No data found");
+    } else {
+      aRows.pop(newRow);
+      this.onInputChange()
+    }
+    oModel.setProperty("/rows", aRows);
+  }
 }

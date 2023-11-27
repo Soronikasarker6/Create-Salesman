@@ -253,7 +253,7 @@
                                             <m:ToolbarSpacer/>
                                             <m:SearchField placeholder="Search" search="filterGlobally" width="15rem"/>
                                             <m:Button text="Add" press="addRow" type="Emphasized"/>
-                                            <m:Button text="Delete" />
+                                            <m:Button text="Delete" press="delete"/>
                                         </m:OverflowToolbar>
                                     </table:extension>
                                     <table:columns>
@@ -270,9 +270,10 @@
                                             </table:template>
                                         </table:Column>
                                         <table:Column filterProperty="Percentage" hAlign="End">
-                                            <m:Label text="Percentage(100%)" />
+                                            <m:Label id="p" text="Percentange {rows>/totalPercentage}%" />
                                             <table:template>
-                                                <m:Input textAlign="End" id="percentage" width="100%" placeholder="0" value="{percentage}"/>
+                                                <m:Input textAlign="End" id="percentage" width="100%" placeholder="0" value="{rows>percentage}"
+                                                change="onInputChange"/>
                                             </table:template>
                                         </table:Column>
                                         <table:Column filterProperty="Name" hAlign="End">
@@ -303,6 +304,11 @@
                                             <m:Label text="Locality" />
                                             <table:template>
                                                 <m:Input id="locality" width="100%" value="{locality}"/>
+                                            </table:template>
+                                        </table:Column>
+                                        <table:Column hAlign="Center" width="5rem">
+                                            <table:template>
+                                                <m:Button id="delete" icon="sap-icon://delete" press="delete"/>
                                             </table:template>
                                         </table:Column>
 
@@ -450,7 +456,8 @@
                         formatter: 'sap.ui.require.toUrl'
                     }" class=" sapUiMediumMarginBegin sapUiTinyMarginTopBottom"/>
                     <m:ToolbarSpacer />
-                    <m:Button text="Save and Exit" press="onSave" type="Emphasized"/>
+                    <m:Button text="Save and Exit" press="onSaveAndExit" 
+                    type="Emphasized" enabled="{rows>/saveBtn}"/>
                     <m:Button text="Save and Go To" press="onSaveAndGo" />
                     <m:Button text="Cancel" press="onDiscard" />
                 </m:OverflowToolbar>
