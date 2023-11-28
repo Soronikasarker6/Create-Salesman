@@ -85,72 +85,85 @@
                         <ObjectPageSubSection id="masterSectionSS1">
                             <blocks>
                                 <m:HBox >
-                                    <m:VBox class="sapUiSmallMargin" width="25%">
+                                    <m:VBox class="sapUiSmallMargin" width="25%" >
                                         
                                         <m:Title level="H3" text="Profile Data:" class="sapUiSmallMarginBottom" />
-                                        <m:Label text="Starting Date"/>
-                                        <m:DatePicker id="DP1" placeholder="Enter Date" change="handleChanges" class="sapUiSmallMarginBottom"/>
-                                        <m:Label text="Ending Date"/>
-                                        <m:DatePicker id="DP2" placeholder="Enter Date" change="handleChanges" class="sapUiSmallMarginBottom"/>
-                                        <m:CheckBox text="Subject To Accounting" class="sapUiSmallMarginTopBottom"/>
-                                        <m:CheckBox text="Salesman Pre-Invoice print" class="sapUiSmallMarginTop" selected="true"/>
+                                      
+                                        
+                                            <m:Label text="Starting Date" />
+                                            <m:DatePicker valueFormat="yyyy-MM-dd"  
+                                                value='{
+                                                    path: "selectedValues>/startDate",
+                                                    type: "sap.ui.model.type.Date",
+                                                    formatOptions: {
+                                                        source: {
+                                                            pattern: "yyyy-MM-dd"
+                                                        }
+                                                    }
+                                                }'                              
+                                                id="SD1" placeholder="Enter Date" change="date" class="sapUiSmallMarginBottom"/>
+                                            <m:Label text="Ending Date" />
+                                            <m:DatePicker  
+                                                dateValue="{selectedValues>/endDate}" valueFormat="yyyy-MM-dd"
+                                                id="SD2" placeholder="Enter Date" change="handleChange" class="sapUiSmallMarginBottom"/>
+                
+                                       <m:CheckBox text="Subject To Accounting" class="sapUiSmallMarginTopBottom" selected="{selectedValues>/accounting}"/>
+                                        <m:CheckBox text="Salesman Pre-Invoice print" class="sapUiSmallMarginTop" selected="{selectedValues>/preInvoice}"/>
 
                                     </m:VBox>
                                     <m:VBox class="sapUiSmallMargin" width="25%">
                                         <m:Title level="H3" text="Salesman/ Subsalesman" class="sapUiSmallMarginBottom"/>
                                         <m:RadioButton text="Salesman with supplier code" class="sapUiSmallMarginTop"/>
                                         <m:Label/>
-                                        <m:RadioButton text="Subsalesman From" class="sapUiSmallMarginTopBottom" selected="true"/>
+                                        <m:RadioButton text="Subsalesman From" class="sapUiSmallMarginTopBottom" />
                                         <m:Label text="Salesman Code:" class="sapUiTinyMarginTop"/>
                                         <m:Input id="subsalesman" placeholder="123" showSuggestion="true"/>
 
                                     </m:VBox>
-                                    <m:VBox class="sapUiSmallMargin" width="50%">
+                                    <m:VBox id="configuration" class="sapUiSmallMargin" width="50%">
                                         <m:Title level="H3" text="Configuration Details" class="sapUiSmallMarginBottom" />
                                         <m:HBox class="sapUiSmallMarginBottom">
                                             <m:VBox width="50%" class="sapUiMediumMarginEnd">
                                                 <m:Label text="Settlement Frequency:"/>
     
-                                                <m:Select id="settlement" showSecondaryValues= "true" width="100%" >
+                                                <m:ComboBox selectedKey="{selectedValues>/settlementFrequency}" 
+                                                    id="settlement" showSecondaryValues= "true" width="100%" 
+                                                    items="{ path: 'master>/sf' }" >
                                                     <m:items>
-                                                        <core:Item text="Settlement Frequency" key="A"/>
-                                                        <core:Item text="B" key="B"/>
-                                                        <core:Item text="C" key="C"/>
+                                                        <core:Item text="{master>fq}" key="{master>id}" />
                                                     </m:items>
-                                                </m:Select>
+                                                </m:ComboBox>
                                             </m:VBox>
                                             <m:VBox width="50%" >
                                                 <m:Label text="Collaborator Type:" />
-                                                <m:Select id="collaborator" width="100%" >
+                                                <m:ComboBox id="collaborator" selectedKey="{selectedValues>/collaboratorType}"  width="100%" items="{ path: 'master>/collaboratorType' }">
                                                 <m:items>
-                                                   <core:Item text="Collaborator Type" key="A"/>
-                                                   <core:Item text="B" key="B"/>
-                                                   <core:Item text="C" key="C"/>
+                                                   <core:Item text="{master>ct}"  key="{master>id}"/>
+
                                                 </m:items>
-                                        </m:Select>
+                                        </m:ComboBox>
                                             </m:VBox>
                                         </m:HBox>
                                         <m:HBox class="sapUiSmallMarginBottom">
                                             <m:VBox width="50%" class="sapUiMediumMarginEnd">
                                                 <m:Label text="Type of Relationship:"/>
-                                                <m:Select id="relationship" width="100%" >
+                                                <m:ComboBox id="relationship" selectedKey="{selectedValues>/relationship}" 
+                                                width="100%" items="{ path: 'master>/relationship' }">
                                                     <m:items>
-                                                        <core:Item text="Type of Relationship" key="A"/>
-                                                        <core:Item text="B" key="B"/>
-                                                        <core:Item text="C" key="C"/>
+                                                        <core:Item text="{master>tr}"  key="{master>id}"/>
+                                            
                                                     </m:items>
-                                                </m:Select>
+                                                </m:ComboBox>
                                             </m:VBox>
                                             <m:VBox width="50%">
 
                                             <m:Label text="Settlement Form:"/>
-                                            <m:Select id="form" width="100%">
+                                            <m:ComboBox id="form" selectedKey="{selectedValues>/settlementForm}" 
+                                                 width="100%" items="{ path: 'master>/settlementForm' }">
                                                 <m:items>
-                                                    <core:Item text="Settlement Form" key="A"/>
-                                                    <core:Item text="B" key="B"/>
-                                                    <core:Item text="C" key="C"/>
+                                                    <core:Item text="{master>sf}"  key="{master>id}"/>
                                                 </m:items>
-                                            </m:Select>
+                                            </m:ComboBox>
                                             </m:VBox>
                                             
                                         </m:HBox>
@@ -158,45 +171,40 @@
                                         <m:HBox class="sapUiSmallMarginBottom">
                                             <m:VBox width="50%" class="sapUiMediumMarginEnd">
                                                 <m:Label text="Salesman Type:"/>
-                                                <m:Select id="salesman" width="100%" >
+                                                <m:ComboBox id="salesman" selectedKey="{selectedValues>/salesmanType}"  width="100%" items="{ path: 'master>/salesmanType' }">
                                                     <m:items>
-                                                        <core:Item text="Salesman Type" key="A"/>
-                                                        <core:Item text="B" key="B"/>
-                                                        <core:Item text="C" key="C"/>
+                                                        <core:Item text="{master>st}"  key="{master>st}"/>
                                                     </m:items>
-                                                </m:Select>
+                                                </m:ComboBox>
                                             </m:VBox>
                                             <m:VBox width="50%">
                                             <m:Label text="Sector of Activity:"/>
-                                            <m:Select id="activity" width="100%">
+                                            <m:ComboBox id="activity" width="100%" selectedKey="{selectedValues>/sectorActivity}" 
+                                            items="{ path: 'master>/sectorActivity' }">
                                                 <m:items>
-                                                    <core:Item text="Sector of Activity" key="A"/>
-                                                    <core:Item text="B" key="B"/>
-                                                    <core:Item text="C" key="C"/>
+                                                    <core:Item text="{master>sa}"  key="{master>sa}"/>
                                                 </m:items>
-                                            </m:Select>
+                                            </m:ComboBox>
                                             </m:VBox>  
                                         </m:HBox>
                                         <m:HBox >
                                             <m:VBox width="50%" class="sapUiMediumMarginEnd">
                                                 <m:Label text="Settlement Currency:"/>
-                                                <m:Select id="currency" width="100%">
+                                                <m:ComboBox id="currency" width="100%" selectedKey="{selectedValues>/settlementCurrency}" 
+                                                     items="{ path: 'master>/settlementCurrency' }">
                                                     <m:items>
-                                                        <core:Item text="Settlement Currency" key="A"/>
-                                                        <core:Item text="B" key="B"/>
-                                                        <core:Item text="C" key="C"/>
+                                                        <core:Item text="{master>sc}"  key="{master>sc}"/>
                                                     </m:items>
-                                                </m:Select>
+                                                </m:ComboBox>
                                             </m:VBox>
                                             <m:VBox width="50%">
                                                 <m:Label text="Sending Method:"/>
-                                                <m:Select id="method" width="100%">
+                                                <m:ComboBox  id="method" width="100%" selectedKey="{selectedValues>/sendingMethod}" 
+                                                 items="{ path: 'master>/sendingMethod' }">
                                                     <m:items>
-                                                        <core:Item text="Sending Method" key="A"/>
-                                                        <core:Item text="B" key="B"/>
-                                                        <core:Item text="C" key="C"/>
+                                                        <core:Item text="{master>sm}"  key="{master>sm}"/>
                                                     </m:items>
-                                                </m:Select>
+                                                </m:ComboBox>
                                             </m:VBox>
                                         </m:HBox>
                                     </m:VBox>

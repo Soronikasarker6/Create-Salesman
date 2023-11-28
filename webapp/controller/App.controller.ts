@@ -7,6 +7,8 @@ import Context from "sap/ui/model/odata/v4/Context";
 import Component from "sap/ui/core/Component";
 import JSONModel from "sap/ui/model/json/JSONModel";
 import View from "sap/ui/core/mvc/View";
+import ComboBox from "sap/m/ComboBox";
+import ClusterGrid from "sap/ui/vbm/ClusterGrid";
 
 /**
  * @namespace create.salesman.controller
@@ -74,65 +76,109 @@ export default class App extends Controller {
     );
     (this.getOwnerComponent() as Component).setModel(
       new JSONModel({
-        settlementFrequency: [
+        sf: [
           {
+            id:1,
             fq:"fq1"
           },
           {
+            id:2,
             fq:"fq2"
           }
         ],
         relationship: [
           {
+            id:1,
             tr:"tr1"
           },
           {
+            id:2,
             tr:"tr2"
           }
         ],
         settlementCurrency: [
           {
+            id:1,
             sc:"USD"
           },
           {
+            id:2,
             sc:"BDT"
+          }
+        ],
+        salesmanType: [
+          {
+            id:1,
+            st:"A"
+          },
+          {
+            id:2,
+            st:"B"
           }
         ],
         collaboratorType: [
           {
+            id:1,
             ct:"ct1"
           },
           {
+            id:2,
             ct:"ct2"
           }
         ],
         settlementForm: [
           {
+            id:1,
             sf:"sf1"
           },
           {
+            id:2,
             sf:"sf2"
           }
         ],
         sectorActivity: [
           {
+            id:1,
             sa:"sa1"
           },
           {
+            id:2,
             sa:"sa2"     
           }
         ],
         sendingMethod:[
           {
+            id:1,
             sm:"sm1"
           },
           {
+            id:2,
             sm:"sm2"    
           }
         ],
       }),
       "master"
     );
+
+    const startDate = new Date().toISOString().split("T")[0] as string;
+
+    (this.getOwnerComponent() as Component).setModel(
+      new JSONModel({
+        startDate: startDate,
+        endDate: this.endDate,
+        accounting: false,
+        preInvoice: true,
+        supplier: false,
+        settlementFrequency: "",
+        relationship: "",
+        settlementCurrency: "",
+        salesmanType: "",
+        collaboratorType: "",
+        settlementForm: "",
+        sectorActivity: "",
+        sendingMethod: "",
+      }), "selectedValues"
+    )
   }
 
   public onValueHelpRequest(oEvent: any): void {
@@ -229,8 +275,17 @@ export default class App extends Controller {
     aRows.push(newRow);
     oModel.setProperty("/rows", aRows);
   }
+date(){
+  console.log("sss")
+}
 
-  public onSaveAndExit() {}
+  public onSaveAndExit() {
+    const selectedSettlementFrequency = this.getView().getModel("selectedValues");
+
+    // Log the selected data
+    console.log(selectedSettlementFrequency.getData());
+
+  }
   public delete() {
     var oModel: any = this.getView().getModel("rows");
     var aRows = oModel.getProperty("/rows");
