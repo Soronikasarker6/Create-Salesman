@@ -68,9 +68,70 @@ export default class App extends Controller {
       new JSONModel({
         rows: [],
         totalPercentage: 0,
-        saveBtn: false,
+        saveBtn: true,
       }),
       "rows"
+    );
+    (this.getOwnerComponent() as Component).setModel(
+      new JSONModel({
+        settlementFrequency: [
+          {
+            fq:"fq1"
+          },
+          {
+            fq:"fq2"
+          }
+        ],
+        relationship: [
+          {
+            tr:"tr1"
+          },
+          {
+            tr:"tr2"
+          }
+        ],
+        settlementCurrency: [
+          {
+            sc:"USD"
+          },
+          {
+            sc:"BDT"
+          }
+        ],
+        collaboratorType: [
+          {
+            ct:"ct1"
+          },
+          {
+            ct:"ct2"
+          }
+        ],
+        settlementForm: [
+          {
+            sf:"sf1"
+          },
+          {
+            sf:"sf2"
+          }
+        ],
+        sectorActivity: [
+          {
+            sa:"sa1"
+          },
+          {
+            sa:"sa2"     
+          }
+        ],
+        sendingMethod:[
+          {
+            sm:"sm1"
+          },
+          {
+            sm:"sm2"    
+          }
+        ],
+      }),
+      "master"
     );
   }
 
@@ -148,7 +209,7 @@ export default class App extends Controller {
       0
     );
     oModel.setProperty("/totalPercentage", totalPercentage);
-    const saveBtn = totalPercentage == 100 ? true : false;
+    const saveBtn =(( totalPercentage == 100 )|| oModel.getData().rows.length === 0)? true : false;
     oModel.setProperty("/saveBtn", saveBtn);
   }
 
@@ -165,9 +226,7 @@ export default class App extends Controller {
       fiscalCode: "",
       locality: "",
     };
-
     aRows.push(newRow);
-
     oModel.setProperty("/rows", aRows);
   }
 
